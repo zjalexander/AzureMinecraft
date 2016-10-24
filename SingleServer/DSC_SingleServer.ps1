@@ -580,7 +580,7 @@ Configuration SingleServer {
             GetScript = "Get-ChildItem c:\Minecraft"
             TestScript = {Test-Path c:\Minecraft\minecraft_server.jar}
             SetScript = {Invoke-WebRequest "https://s3.amazonaws.com/Minecraft.Download/versions/1.10.2/minecraft_server.1.10.2.jar" -OutFile C:\Minecraft\minecraft_server.jar}
-        }
+            DependsOn = "[WindowsFeature]NET35","[Script]fileJava","[Package]installJava","[File]MinecraftFolder","[Environment]MinecraftRoot","[Script]CreeperHubSource","[xFirewall]MinecraftFW"
         }
 		# Run - Minecraft (via Java)
         Script MinecraftRunning {
