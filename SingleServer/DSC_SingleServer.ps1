@@ -568,13 +568,20 @@ Configuration SingleServer {
         }
 
 		# Install - Minecraft (via Chocolatey)
-        Script MinecraftInstall {
+ <#       Script MinecraftInstall {
             GetScript = "Get-Package"
             TestScript = { (Get-Package | Where-Object {$_.Name -eq 'minecraft'}).Count -eq 1 }
             SetScript = "Install-Package minecraft -Source CreeperHub -ProviderName chocolatey  -Force"
             DependsOn = "[WindowsFeature]NET35","[Script]fileJava","[Package]installJava","[File]MinecraftFolder","[Environment]MinecraftRoot","[Script]CreeperHubSource","[xFirewall]MinecraftFW"
         }
+#>
 
+        Script MinecraftInstall {
+            GetScript = "Get-ChildItem c:\Minecraft"
+            TestScript = {Test-Path c:\Minecraft\minecraft_server.jar}
+            SetScript = {Invoke-WebRequest "https://s3.amazonaws.com/Minecraft.Download/versions/1.10.2/minecraft_server.1.10.2.jar" -OutFile C:\Minecraft\minecraft_server.jar}
+        }
+        }
 		# Run - Minecraft (via Java)
         Script MinecraftRunning {
             GetScript = "Get-Process -Name java"
