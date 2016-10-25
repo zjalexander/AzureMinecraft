@@ -89,7 +89,8 @@ Configuration SingleServer {
             TestScript = "Test-Path C:\Installs\jre-8u60-windows-i586.exe"
             SetScript = {
                 New-Item -ItemType Container -Path C:\Installs -Force
-                Invoke-WebRequest "http://javadl.sun.com/webapps/download/AutoDL?BundleId=109706" -OutFile C:\Installs\jre-8u60-windows-i586.exe
+                #http://javadl.oracle.com/webapps/download/AutoDL?BundleId=216434
+                Invoke-WebRequest "http://javadl.oracle.com/webapps/download/AutoDL?BundleId=216434" -OutFile C:\Installs\jre-8u60-windows-i586.exe
             }
         }
 
