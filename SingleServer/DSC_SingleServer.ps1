@@ -96,10 +96,10 @@ Configuration SingleServer {
 
         # Install - Java (JRE 8u60)
         Package installJava {
-            Name = "Install Java"
+            Name = "Java 8 Update 111 (64-bit)"
             Path = "C:\Installs\jre-8u60-windows-i586.exe"
             Arguments = "/s /l*vx C:\Installs\jre-8u60-windows-i586.log"
-            ProductID = "26A24AE4-039D-4CA4-87B4-2F83218060F0"
+            ProductID =  "26A24AE4-039D-4CA4-87B4-2F64180111F0" #old - "26A24AE4-039D-4CA4-87B4-2F83218060F0"
             Ensure = "Present"
             DependsOn = "[Script]fileJava"
         }
