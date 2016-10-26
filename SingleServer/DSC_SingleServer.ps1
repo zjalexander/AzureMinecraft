@@ -587,7 +587,7 @@ Configuration SingleServer {
         Script MinecraftRunning {
             GetScript = "Get-Process -Name java"
             TestScript = { (Get-WmiObject Win32_Process -Filter {CommandLine like '%minecraft_server.jar%'} | Measure-Object).Count -eq 1 }
-            SetScript = { Start-Process -FilePath "C:\Program Files (x86)\Java\jre1.8.0_60\bin\java.exe" -ArgumentList "-Xmx1024M -Xms1024M -jar C:\Minecraft\minecraft_server.jar nogui" -WorkingDirectory C:\Minecraft }
+            SetScript = { Start-Process -FilePath "java.exe" -ArgumentList "-Xmx1024M -Xms1024M -jar C:\Minecraft\minecraft_server.jar nogui" -WorkingDirectory C:\Minecraft }
 			DependsOn = "[Script]MinecraftInstall"
         }
 	}
